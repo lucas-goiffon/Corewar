@@ -65,8 +65,7 @@ Pour faire simple je vais expliquer les différents termes du sujet au fur et à
 .comment "Just a basic living program"
 
 l2:     sti r1, %:live, %1
-        ld %4, r4
-        ld %200, r2
+        ld %0, r2
 
 live:
         live %1
@@ -150,8 +149,7 @@ cat zork.s:
 .comment "Just a basic living program"
 
 l2:     sti r1, %:live, %1
-        ld %4, r4
-        ld %200, r2
+        ld %0, r2
 
 live:
         live %1
@@ -162,20 +160,47 @@ hexdump -C zork.cor
 00000000  00 ea 83 f3 5a 6f 72 6b  00 00 00 00 00 00 00 00  |....Zork........|
 00000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 *
-00000080  00 00 00 00 00 00 00 00  00 00 00 1d 4a 75 73 74  |............Just|
+00000080  00 00 00 00 00 00 00 00  00 00 00 16 4a 75 73 74  |............Just|
 00000090  20 61 20 62 61 73 69 63  20 6c 69 76 69 6e 67 20  | a basic living |
 000000a0  70 72 6f 67 72 61 6d 00  00 00 00 00 00 00 00 00  |program.........|
 000000b0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 *
-00000890  0b 68 01 00 15 00 01 02  90 00 00 00 04 04 02 90  |.h..............|
-000008a0  00 00 00 c8 02 01 00 00  00 01 09 ff fb           |.............|
-000008ad
+00000890  0b 68 01 00 0e 00 01 02  90 00 00 00 00 02 01 00  |.h..............|
+000008a0  00 00 01 09 ff fb                                 |......|
+000008a6
 
 
 Bon décortiquons tout ça...
-00 ea 83 f3       En lisant le op.h on se rend compte que c'est le MAGIC. Le MAGIC est présent au début de chaque fichier dans notre ordinateur. Il permet de déterminer l'extension du fichier. Eh oui l'extension ne dépend pas uniquement du nom du fichier !
 
+Tout d'abord le hexdump ce lit de cette manière: à gauche c'est le numéro de la ligne, au milieu le code traduit byte par byte en hexa, et à droite la correspondance en ascii de chaque byte.
+
+00 ea 83 f3       En lisant le op.h on se rend compte que c'est le MAGIC. Le MAGIC est présent au début de chaque fichier dans notre ordinateur. Il permet de déterminer l'extension du fichier. Eh oui l'extension ne dépend pas uniquement du nom du fichier !
+0x5a 0x6f 0x72 0x6b = 90 111 114 107 = "Zork" en ascii.
+0x00 0x00 0x00 0x1d = 22. C'est le prog_size. En effet si on compte à partir de la ligne 890 il y a bien 22 bytes.
+Ensuite il y a le commentaire...
+
+Puis on arrive ligne 890, début des instructions:
+      (Coding byte)
+sti                   r1,           %:live,             %1
+0b    68              01            00 0e               00 01
+
+ld                    %0,           r2
+02    90              00 00 00 00   02
+
+live                  %1
+01                    00 00 00 01
+
+zjmp                  %:live
+09                    ff fb
 ```
+Pour tester les conversions, utilisez le site https://www.rapidtables.com/convert/number/hex-to-decimal.html
+
+Il vous permettra de voir correctement les nombres négatifs dans la case "Decimal from signed 2's complement".
+
+
+#### Problèmes rencontrés
+J'ai eu des problème principalement au niveau des conversions le little endian vers big endian pour les nombres à écrire sur 2 bytes.
+
 
 ## Auteur
 * **Lucas GOIFFON** - [lucas-goiffon](https://github.com/lucas-goiffon)
