@@ -37,13 +37,20 @@ Bon il est temps de passer aux explications de ce super projet !
 ## L'Assembleur
 C'est la partie avec laquelle je vous conseille de commencer, sans avoir compris l'assembleur vous ne pourrez pas faire la VM alors que le contraire est possible.
 
+
 L'assembleur sert à transformer les champions, écrits dans un langage basé sur l'assembleur, en exécutables lisibles par la Machine Virtuelle.
 
+
 Pour bien commencer, vous devez faire le bootstrap. En effet vous allez apprendre que vous pouvez écrire autre chose que des charactères à l'intérieur des fichiers, comme des int voir même des structures.
+
 (Petit rappel: un byte vaut 8bits. N'hésitez pas à aller chercher comment fonctionne le binaire si besoin.)
+
 Ces différents types prennent évidemment différentes tailles dans la mémoire:
+
     - Un **unsigned char** peut contenir des valeurs entre 0 et 255. 255 = 1111 1111. C'est donc écrit sur 1byte.
+    
     - Un **int** peut contenir des valeurs entre -2 147 483 648 et 2 147 483 647. Il est écrit sur 4bytes.
+
 Pour connaître facilement combien de bytes vont être utilisés par le type, vous pouvez vous servir de "sizeof(TYPE)" qui vous renverra le nombre correspondant.
 
 
