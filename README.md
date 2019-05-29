@@ -175,8 +175,8 @@ Bon décortiquons tout ça...
 Tout d'abord le hexdump ce lit de cette manière: à gauche c'est le numéro de la ligne, au milieu le code traduit byte par byte en hexa, et à droite la correspondance en ascii de chaque byte.
 
 00 ea 83 f3       En lisant le op.h on se rend compte que c'est le MAGIC. Le MAGIC est présent au début de chaque fichier dans notre ordinateur. Il permet de déterminer l'extension du fichier. Eh oui l'extension ne dépend pas uniquement du nom du fichier !
-0x5a 0x6f 0x72 0x6b = 90 111 114 107 = "Zork" en ascii.
-0x00 0x00 0x00 0x1d = 22. C'est le prog_size. En effet si on compte à partir de la ligne 890 il y a bien 22 bytes.
+0x5a 0x6f 0x72 0x6b = 90 111 114 107 = "Zork" en ascii. C'est le prog name.
+0x00 0x00 0x00 0x16 = 22. C'est le prog_size. En effet si on compte à partir de la ligne 890 il y a bien 22 bytes.
 Ensuite il y a le commentaire...
 
 Puis on arrive ligne 890, début des instructions:
@@ -199,7 +199,22 @@ Il vous permettra de voir correctement les nombres négatifs dans la case "Decim
 
 
 #### Problèmes rencontrés
-J'ai eu des problème principalement au niveau des conversions le little endian vers big endian pour les nombres à écrire sur 2 bytes.
+J'ai eu des problèmes principalement au niveau des conversions le little endian vers big endian pour les nombres à écrire sur 2 bytes. Je m'explique:
+```
+int number = 1;
+
+Dans notre ordinateur, byte par byte, number est écrit comme ceci: 01 00 00 00.     (sur 4 bytes car c'est un int)
+Nous on doit l'écrire en Big Endian, donc "à l'envers", comme ceci: 00 00 00 01.    (au passage ce mode est plus "human readable"
+Si c'est un indirect, on doit l'écrire sur 2 bytes.
+Sauf que dans ce cas si on prend 00 00 00 01, sur 2 bytes il va écrire que les 2 premiers, donc 00 00...
+Et si on ne convertit pas avant on se retrouve avec 01 00. Sauf qu'on veut 00 01.
+La solution: le décalage binaire !
+number = (number << 16) | (number >> 16);
+Et on aura bien: 00 01 00 00 !
+```
+
+
+#### Explications des instructions
 
 
 ## Auteur
