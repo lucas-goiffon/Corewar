@@ -204,7 +204,7 @@ J'ai eu des problèmes principalement au niveau des conversions le little endian
 int number = 1;
 
 Dans notre ordinateur, byte par byte, number est écrit comme ceci: 01 00 00 00.     (sur 4 bytes car c'est un int)
-Nous on doit l'écrire en Big Endian, donc "à l'envers", comme ceci: 00 00 00 01.    (au passage ce mode est plus "human readable"
+Nous on doit l'écrire en Big Endian, donc "à l'envers", comme ceci: 00 00 00 01.    (au passage ce mode est plus "human readable")
 Si c'est un indirect, on doit l'écrire sur 2 bytes.
 Sauf que dans ce cas si on prend 00 00 00 01, sur 2 bytes il va écrire que les 2 premiers, donc 00 00...
 Et si on ne convertit pas avant on se retrouve avec 01 00. Sauf qu'on veut 00 01.
