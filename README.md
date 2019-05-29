@@ -214,7 +214,7 @@ Et on aura bien: 00 01 00 00 !
 ```
 
 
-#### Explications des instructions
+#### Explication de chaque instruction
 
 
 ## Auteur
