@@ -11,10 +11,7 @@ Bon cette fois-ci le projet va être présenté en Français parce que je vais e
 
 
 ## Instructions
-Pour tester ce projet, il suffit de make dans le répertoire. Vous aurez ensuite l'assembleur dans le dossier "asm" ainsi que la machine virtuelle dans le dossier "corewar". Vous trouverez aussi dans le dossier bonus un **Désassembleur** et une VM permettant de jouer avec un fond sonore ET en **multi-joueurs** !
-```
-make
-```
+Pour tester ce projet, il suffit de `make` dans le répertoire. Vous aurez ensuite l'assembleur dans le dossier "asm" ainsi que la machine virtuelle dans le dossier "corewar". Vous trouverez aussi dans le dossier bonus un **Désassembleur** et une VM permettant de jouer avec un fond sonore ET en **multi-joueurs** !
 
 
 ## Utilisation
@@ -213,6 +210,21 @@ number = (number << 16) | (number >> 16);
 Et on aura bien: 00 01 00 00 !
 ```
 
+
+#### Tests Unitaires
+Pour tout projet de grande ampleur il faut faire des tests... Beaucoup de tests !
+
+Et c'est pour cela que vous trouverez votre bonheur dans le dossier bonus/unit_test.
+En effet il y a 2 scripts de tests:
+  - script.sh: Il faut avoir dans le même répertoire votre assembleur ainsi que l'assembleur donné dans le sujet renommé en "ref". Il va tester tous les fichiers présents dans le dossier _champ_ avec votre Assembleur et l'assembleur référent, puis il comparera les résultats.
+  - test_errors.sh: Celui ci prend en argument votre assembleur. Il va tester tous les fichiers présents dans le dossier _error_ et vérifier que vous retournez bien 84.
+
+Ce qui nous fait un total d'une centaine de tests. Ça permet d'atteindre **entre 80 et 100% à la moulinette**.
+
+
+
+## La Machine Virtuelle
+Maintenant que l'assembleur est fini, attaquons la partie VM !
 
 #### Explication de chaque instruction
 
