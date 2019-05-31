@@ -216,8 +216,8 @@ Pour tout projet de grande ampleur il faut faire des tests... Beaucoup de tests 
 
 Et c'est pour cela que vous trouverez votre bonheur dans le dossier bonus/unit_test.
 En effet il y a 2 scripts de tests:
-  - script.sh: Il faut avoir dans le même répertoire votre assembleur ainsi que l'assembleur donné dans le sujet renommé en "ref". Il va tester tous les fichiers présents dans le dossier _champ_ avec votre Assembleur et l'assembleur référent, puis il comparera les résultats.
-  - test_errors.sh: Celui ci prend en argument votre assembleur. Il va tester tous les fichiers présents dans le dossier _error_ et vérifier que vous retournez bien 84.
+  - **script.sh**: Il faut avoir dans le même répertoire votre assembleur ainsi que l'assembleur donné dans le sujet renommé en "ref". Il va tester tous les fichiers présents dans le dossier _champ_ avec votre Assembleur et l'assembleur référant, puis il comparera les résultats.
+  - **test_errors.sh**: Celui-ci prend en argument votre assembleur. Il va tester tous les fichiers présents dans le dossier _error_ et vérifier que vous retournez bien 84.
 
 Ce qui nous fait un total d'une centaine de tests. Ça permet d'atteindre **entre 80 et 100% à la moulinette**.
 
@@ -225,6 +225,12 @@ Ce qui nous fait un total d'une centaine de tests. Ça permet d'atteindre **entr
 
 ## La Machine Virtuelle
 Maintenant que l'assembleur est fini, attaquons la partie VM !
+
+
+#### La base
+La VM dispose:
+  - D'un espace mémoire CIRCULAIRE, composé de MEM_SIZE bytes (ici 6144B). Pour faire simplement c'est un char*. N'ayant pas trouvé de moyen de faire pointer le dernier caractère sur le premier, j'ai utilisé une autre solution: A chaque fois que je devais lire ou écrire dedans, j'appliquais un modulo MEM_SIZE. Par exemple, le PC est à 6146, 6146 % 6144 = 2, on se retrouve à la deuxième case de la mémoire. Seulement, faites attention aux nombres négatifs. 
+
 
 #### Explication de chaque instruction
 
