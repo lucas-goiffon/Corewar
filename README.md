@@ -233,6 +233,12 @@ La VM dispose:
 
 
 #### Explication de chaque instruction
+Malheureusement je vais devoir m'arrêter ici pour deux raisons.
+La première est que c'est trop facile si mâche le travail à tous les étudiants qui ont le projet à faire.
+La seconde est que malheureusement j'ai énormément de travail, à l'heure actuelle ça fait 3 mois que j'ai commencé ce repo, je suis en stage, et je n'ai vraiment plus la motivation d'essayer de me rappeler le fonctionnement de tout ça, et puis je n'ai pas trop envie de dire n'importe quoi...
+
+## Conclusion
+Ce qu'il faut retenir de ce projet, c'est qu'il est extrêmement intéressant, il apporte beaucoup à la connaissance de notre ordinateur, de son fonctionnement, et il permet aussi de "level up" en code. Je recommande bien évidemment de le faire.
 
 
 ## Auteur
