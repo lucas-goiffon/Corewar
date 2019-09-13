@@ -92,7 +92,7 @@ live %666
 to_write[0] = 01 (l'op code de live)      ->     stock[0] = 1 (nombre de bytes sur lequel on doit écrire number[0])
 to_write[1] = 666 (premier argument)      ->     stock[1] = 4 (= DIR_SIZE bytes car c'est un direct)
 ```
-4) Une fois que tout a été compté, passez une seconde fois à la recherche des labels. Il vous suffira juste d'additionner les nombres de bytes écrits dans votre int *"stock" jusqu'au label correspondant. (Il y aura des exemples par la suite.
+4) Une fois que tout a été compté, passez une seconde fois à la recherche des labels. Il vous suffira juste d'additionner les nombres de bytes écrits dans votre int *"stock" jusqu'au label correspondant. (Il y aura des exemples par la suite.)
 5) Il vous suffit d'écrire chaque maillon de votre int *"to_write" à la taille écrite dans votre int *"stock" (write(fd, to_write\[i], stock\[i]);). Attention il vous faudra aussi penser à convertir le contenu de little endian vers big endian ! Pour cela vous pourrez utiliser cette "fonction":
 ```
 #define SWAP_UINT32(x) ((x >> 24) & 0xff) | (( x << 8) & 0xff0000) | ((x >> 8) & 0xff00) | ((x << 24) & 0xff000000)
