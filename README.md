@@ -23,11 +23,6 @@ Pour la machine virtuelle voici les arguments possibles (pour la machine virtuel
 ![Usage Screenshot](/bonus/screenshots/usage.png?raw=true "Usage Screenshot")
 
 
-## No memory leaks
-![Valgrind Asm Screenshot](/bonus/screenshots/valgrind_asm.png?raw=true "Valgrind Asm Screenshot")
-![Valgrind VM Screenshot](/bonus/screenshots/valgrind_vm.png?raw=true "Valgrind VM Screenshot")
-
-
 # Explications
 Bon il est temps de passer aux explications de ce super projet !
 
