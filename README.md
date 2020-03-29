@@ -2,9 +2,18 @@
 ###### {EPITECH First Year Project}
 Last Project of the year ! Currently the best project of the 2018 SchoolYear at Marseille !
 
-# CE REPO EST EN CRÉATION !
+## Introduction
 
 Bon cette fois-ci le projet va être présenté en Français parce que je vais essayer de l'expliquer entièrement afin qu'il soit plus compréhensible pour les prochains élèves qui le feront. Alors n'hésitez pas à descendre un peu plus bas afin de voir toute l'explication !
+
+CoreWar est un jeu de programmation dans lequel des programmes informatiques sont en concurrence pour le contrôle d'une machine virtuelle appelée MARS, pour Memory Array Redcode Simulator.
+
+Le but de se projet est de recréer ce jeu. Pour mener à bien ceci, deux programmes sont à créer:
+
+   - L'Assembleur: les champions sont écrits en "RedCode" (langage basé sur le langage assembleur), le but de cette partie est de transformer ces fichiers en exécutables compréhensibles par la seconde partie.
+
+   - La Machine Virtuelle: c'est un programme qui créer un espace mémoire d'environs 6kB, il y charge les champions et les exécute.
+
 
 ## Visuel
 ![Game Screenshot](/bonus/screenshots/game.png?raw=true "Game Screenshot")
